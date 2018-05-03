@@ -9,8 +9,6 @@ namespace Task6.BLL.Services
 		private readonly Stream _stream;
 		private readonly IProgressBar _progressBar;
 
-		public int Percent { get; private set; }
-
 		public override bool CanRead { get; }
 		public override bool CanSeek { get; }
 		public override bool CanWrite { get; }
