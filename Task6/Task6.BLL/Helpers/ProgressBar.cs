@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Task6.BLL.Interfaces;
 
 namespace Task6.BLL.Helpers

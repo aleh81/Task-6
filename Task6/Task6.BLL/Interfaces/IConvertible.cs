@@ -1,5 +1,4 @@
-﻿
-namespace Task6.BLL.Interfaces
+﻿namespace Task6.BLL.Interfaces
 {
 	public interface IConvertible
 	{

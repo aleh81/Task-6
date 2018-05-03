@@ -1,10 +1,6 @@
 ﻿using System;
 using Task6.BLL.Helpers;
 using System.IO;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using NUnit.Framework;
 using Task6.BLL.Services;
 
 namespace Task6.UI
