@@ -43,9 +43,12 @@
     <Compile Include="Helpers\ExceptionDisplay.cs" />
     <Compile Include="Helpers\ProgramConverter.cs" />
     <Compile Include="Helpers\ProgramHelper.cs" />
+    <Compile Include="Helpers\ProgressBar.cs" />
     <Compile Include="Interfaces\ICodeChecker.cs" />
     <Compile Include="Interfaces\IConvertible.cs" />
+    <Compile Include="Interfaces\IProgressBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ProgressBarStream.cs" />
     <Compile Include="Services\ProtectedStream.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -1,13 +1,14 @@
 ﻿using System;
 using Task6.BLL.Helpers;
 using System.IO;
+using System.Net;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using NUnit.Framework;
 using Task6.BLL.Services;
 
 namespace Task6.UI
 {
-
 	class Program
 	{
 		public static string FilePath =
@@ -22,6 +23,16 @@ namespace Task6.UI
 			Read(FilePath + FileName, "fdsfsd");
 
 			Read(FilePath + FileName, "MyPassword");
+
+			Console.WriteLine();
+
+			ReadProgress(FilePath + FileName, 95);
+
+			ReadProgress(FilePath + FileName, 15);
+
+			ReadProgress(FilePath + FileName, 99);
+
+			ReadProgress(FilePath + FileName, 1);
 
 			Console.ReadKey();
 		}
@@ -54,8 +65,35 @@ namespace Task6.UI
 						protectedStream.Read(array, 0, array.Length);
 
 						string textFromFile = System.Text.Encoding.Default.GetString(array);
-						
+
 						Console.WriteLine($"Text from file: \n {textFromFile}");
+					}
+				}
+				catch (Exception e)
+				{
+					ExceptionDisplay.Display(e);
+				}
+			}
+		}
+
+		public static void ReadProgress(string path, int percent)
+		{
+			using (var fileStream = File.OpenRead(path))
+			{
+				try
+				{
+					var progressBar = new ProgressBar();
+					using ( var progressStream = new ProgressBarStream(fileStream, progressBar, percent))
+					{
+						var array = new byte[fileStream.Length];
+
+						progressStream.Read(array, 0, percent);
+
+						var textFromFile = System.Text.Encoding.Default.GetString(array);
+
+						Console.WriteLine();
+
+						Console.WriteLine($"Read text: \n  {textFromFile}");
 					}
 				}
 				catch (Exception e)
