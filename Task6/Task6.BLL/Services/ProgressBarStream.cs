@@ -17,11 +17,10 @@ namespace Task6.BLL.Services
 		public override long Length { get; }
 		public override long Position { get; set; }
 
-		public ProgressBarStream(Stream stream, IProgressBar progressBar, int percent)
+		public ProgressBarStream(Stream stream, IProgressBar progressBar)
 		{
 			_stream = stream;
 			_progressBar = progressBar;
-			Percent = percent;
 		}
 
 		public override int Read(byte[] buffer, int offset, int percent)

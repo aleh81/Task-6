@@ -79,7 +79,7 @@ namespace Task6.UI
 				try
 				{
 					var progressBar = new ProgressBar();
-					using ( var progressStream = new ProgressBarStream(fileStream, progressBar, percent))
+					using ( var progressStream = new ProgressBarStream(fileStream, progressBar))
 					{
 						var array = new byte[fileStream.Length];
 
