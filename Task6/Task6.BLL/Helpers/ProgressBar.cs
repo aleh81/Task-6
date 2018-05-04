@@ -3,9 +3,9 @@ using Task6.BLL.Interfaces;
 
 namespace Task6.BLL.Helpers
 {
-	public class ProgressBar : IProgressBar
+	public static class ProgressBar
 	{
-		public void DisplayProgress(int progress, int tot)
+		public static void DisplayProgress(int progress, int tot)
 		{
 			Console.CursorLeft = 0;
 			Console.Write("["); 

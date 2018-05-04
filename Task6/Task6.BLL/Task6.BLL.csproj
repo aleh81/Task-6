@@ -46,7 +46,6 @@
     <Compile Include="Helpers\ProgressBar.cs" />
     <Compile Include="Interfaces\ICodeChecker.cs" />
     <Compile Include="Interfaces\IConvertible.cs" />
-    <Compile Include="Interfaces\IProgressBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ProgressBarStream.cs" />
     <Compile Include="Services\ProtectedStream.cs" />
