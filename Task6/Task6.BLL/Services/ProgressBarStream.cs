@@ -13,13 +13,13 @@ namespace Task6.BLL.Services
 		public override bool CanWrite { get; }
 		public override long Length { get; }
 		public override long Position { get; set; }
-		public int Percent { get; private set; }
+		public double Percent { get; private set; }
 
-		public delegate void ProgressStateHandler(int per);
+		public delegate void ProgressStateHandler(double per);
 
 		public event ProgressStateHandler Progress;
 
-		public ProgressBarStream(Stream stream, int percent)
+		public ProgressBarStream(Stream stream, double percent)
 		{
 			_stream = stream;
 			Length = stream.Length;

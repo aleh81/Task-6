@@ -22,9 +22,9 @@ namespace Task6.UI
 
 			Console.WriteLine();
 
-			ReadProgress(FilePath + FileName, 95);
+			ReadProgress(FilePath + FileName, 95.3);
 
-			ReadProgress(FilePath + FileName, 15);
+			ReadProgress(FilePath + FileName, 15.8);
 
 			ReadProgress(FilePath + FileName, 99);
 
@@ -72,7 +72,7 @@ namespace Task6.UI
 			}
 		}
 
-		public static void ReadProgress(string path, int percent)
+		public static void ReadProgress(string path, double percent)
 		{
 			using (var fileStream = File.OpenRead(path))
 			{
@@ -102,7 +102,7 @@ namespace Task6.UI
 			}
 		}
 
-		public static void Display_Progress(int percent)
+		public static void Display_Progress(double percent)
 		{
 			ProgressBar.DisplayProgress(percent);
 		}

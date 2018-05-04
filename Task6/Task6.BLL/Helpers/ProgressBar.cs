@@ -5,9 +5,9 @@ namespace Task6.BLL.Helpers
 {
 	public static class ProgressBar
 	{
-		private const int Total = 100;
+		private const double Total = 100;
 
-		public static void DisplayProgress(int progress)
+		public static void DisplayProgress(double progress)
 		{
 			Console.CursorLeft = 0;
 			Console.Write("["); 
@@ -33,7 +33,7 @@ namespace Task6.BLL.Helpers
 
 			Console.CursorLeft = 35;
 			Console.BackgroundColor = ConsoleColor.Black;
-			Console.Write(progress.ToString() + " of " + Total.ToString() + "%"); 
+			Console.Write(progress + " of " + Total + "%"); 
 		}
 	
 	}
