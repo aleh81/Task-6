@@ -78,13 +78,15 @@ namespace Task6.UI
 			{
 				try
 				{
-					using ( var progressStream = new ProgressBarStream(fileStream))
+					using ( var progressStream = new ProgressBarStream(fileStream, percent))
 					{
 						progressStream.Progress += Display_Progress;
 
 						var array = new byte[fileStream.Length];
 
-						progressStream.Read(array, 0, percent);
+						var count = progressStream.Length / 100.0 * percent;
+
+						progressStream.Read(array, 0, (int)count);
 
 						var textFromFile = System.Text.Encoding.Default.GetString(array);
 

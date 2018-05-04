@@ -13,43 +13,44 @@ namespace Task6.BLL.Services
 		public override bool CanWrite { get; }
 		public override long Length { get; }
 		public override long Position { get; set; }
+		public int Percent { get; private set; }
 
 		public delegate void ProgressStateHandler(int per, int tot);
 
 		public event ProgressStateHandler Progress;
 
-		public ProgressBarStream(Stream stream)
+		public ProgressBarStream(Stream stream, int percent)
 		{
 			_stream = stream;
+			Length = stream.Length;
+			Percent = percent;
 		}
 
-		public override int Read(byte[] buffer, int offset, int percent)
+		public override int Read(byte[] buffer, int offset, int count)
 		{
-			var count = _stream.Length / 100.0 * percent;
+			Progress?.Invoke(Percent, 100);
 
-			Progress?.Invoke(percent, 100);
-
-			return _stream.Read(buffer, offset, (int)count);
+			return _stream.Read(buffer, offset, count);
 		}
 
 		public override void Flush()
 		{
-			throw new NotImplementedException();
+			_stream.Flush();
 		}
 
 		public override long Seek(long offset, SeekOrigin origin)
 		{
-			throw new NotImplementedException();
+			return _stream.Seek(offset, origin);
 		}
 
 		public override void SetLength(long value)
 		{
-			throw new NotImplementedException();
+			_stream.SetLength(value);
 		}
 
 		public override void Write(byte[] buffer, int offset, int count)
 		{
-			throw new NotImplementedException();
+			_stream.Write(buffer, offset, count);
 		}
 	}
 }
