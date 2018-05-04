@@ -102,9 +102,9 @@ namespace Task6.UI
 			}
 		}
 
-		public static void Display_Progress(int percent, int total)
+		public static void Display_Progress(int percent)
 		{
-			ProgressBar.DisplayProgress(percent, total);
+			ProgressBar.DisplayProgress(percent);
 		}
 	}
 }

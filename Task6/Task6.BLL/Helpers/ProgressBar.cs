@@ -5,14 +5,16 @@ namespace Task6.BLL.Helpers
 {
 	public static class ProgressBar
 	{
-		public static void DisplayProgress(int progress, int tot)
+		private const int Total = 100;
+
+		public static void DisplayProgress(int progress)
 		{
 			Console.CursorLeft = 0;
 			Console.Write("["); 
 			Console.CursorLeft = 32;
 			Console.Write("]");
 			Console.CursorLeft = 1;
-			var onechunk = 30.0f / tot;
+			var onechunk = 30.0f / Total;
 
 			var position = 1;
 			for (var i = 0; i < onechunk * progress; i++)
@@ -31,7 +33,7 @@ namespace Task6.BLL.Helpers
 
 			Console.CursorLeft = 35;
 			Console.BackgroundColor = ConsoleColor.Black;
-			Console.Write(progress.ToString() + " of " + tot.ToString() + "%"); 
+			Console.Write(progress.ToString() + " of " + Total.ToString() + "%"); 
 		}
 	
 	}

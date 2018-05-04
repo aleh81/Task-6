@@ -15,7 +15,7 @@ namespace Task6.BLL.Services
 		public override long Position { get; set; }
 		public int Percent { get; private set; }
 
-		public delegate void ProgressStateHandler(int per, int tot);
+		public delegate void ProgressStateHandler(int per);
 
 		public event ProgressStateHandler Progress;
 
@@ -28,7 +28,7 @@ namespace Task6.BLL.Services
 
 		public override int Read(byte[] buffer, int offset, int count)
 		{
-			Progress?.Invoke(Percent, 100);
+			Progress?.Invoke(Percent);
 
 			return _stream.Read(buffer, offset, count);
 		}
