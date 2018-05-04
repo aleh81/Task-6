@@ -7,7 +7,6 @@ namespace Task6.BLL.Services
 	public class ProgressBarStream: Stream
 	{
 		private readonly Stream _stream;
-		private readonly IProgressBar _progressBar;
 
 		public override bool CanRead { get; }
 		public override bool CanSeek { get; }
@@ -15,19 +14,20 @@ namespace Task6.BLL.Services
 		public override long Length { get; }
 		public override long Position { get; set; }
 
-		public ProgressBarStream(Stream stream, IProgressBar progressBar)
+		public delegate void ProgressStateHandler(int per, int tot);
+
+		public event ProgressStateHandler Progress;
+
+		public ProgressBarStream(Stream stream)
 		{
 			_stream = stream;
-			_progressBar = progressBar;
 		}
 
 		public override int Read(byte[] buffer, int offset, int percent)
 		{
 			var count = _stream.Length / 100.0 * percent;
-			for (var i = 1; i <= percent; i++)
-			{
-				_progressBar.DisplayProgress(i, 100);
-			}
+
+			Progress?.Invoke(percent, 100);
 
 			return _stream.Read(buffer, offset, (int)count);
 		}

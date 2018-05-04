@@ -78,9 +78,10 @@ namespace Task6.UI
 			{
 				try
 				{
-					var progressBar = new ProgressBar();
-					using ( var progressStream = new ProgressBarStream(fileStream, progressBar))
+					using ( var progressStream = new ProgressBarStream(fileStream))
 					{
+						progressStream.Progress += Display_Progress;
+
 						var array = new byte[fileStream.Length];
 
 						progressStream.Read(array, 0, percent);
@@ -97,6 +98,12 @@ namespace Task6.UI
 					ExceptionDisplay.Display(e);
 				}
 			}
+		}
+
+		public static void Display_Progress(int percent, int total)
+		{
+			var progressBar = new ProgressBar();
+			progressBar.DisplayProgress(percent, total);
 		}
 	}
 }
